@@ -1,13 +1,12 @@
 class TasksController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
   def index
     @tasks = current_user.tasks.page(params[:page]).per(3)
   end
 
   def show
-    @task = Task.find(params[:id])
   end
 
   def new
